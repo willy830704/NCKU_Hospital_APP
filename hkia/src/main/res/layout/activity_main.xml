@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sails.hkiademo.MainActivity"
+    tools:ignore="MergeRootFrame"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff1f1f1"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:id="@+id/imageView9"
+            android:src="@drawable/locate"
+            android:padding="3dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#ffacacac"
+        android:visibility="gone"></FrameLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/container"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@android:color/background_light"></FrameLayout>
+
+</LinearLayout>
