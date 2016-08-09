@@ -492,25 +492,25 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
 
 
-        void generateFloorSpinnerProcedure() {
-            Activity activity = getActivity();
-            if (activity == null)
-                return;
-            activity.runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    if (mSailsMapView == null)
-                        return;
-                    List<String> floorList = mSails.getFloorDescList();
-                    if(FLOOR_GUIDE)
-                        floorList.add(0,getString(R.string.floorguide));
-                    final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
-                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, floorList);
-                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setAdapter(dataAdapter);
-                }
-            });
-        }
+//        void generateFloorSpinnerProcedure() {
+//            Activity activity = getActivity();
+//            if (activity == null)
+//                return;
+//            activity.runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//                    if (mSailsMapView == null)
+//                        return;
+//                    List<String> floorList = mSails.getFloorDescList();
+//                    if(FLOOR_GUIDE)
+//                        floorList.add(0,getString(R.string.floorguide));
+//                    final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
+//                    ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, floorList);
+//                    dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                    spinner.setAdapter(dataAdapter);
+//                }
+//            });
+//        }
 
         public void showArrangeModeMarker() {
             if (mStartEndManager.getStart() != null) {
@@ -569,47 +569,47 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             mSailsMapView.setLocationMarker(R.drawable.myloc_cir, R.drawable.myloc_arr, accuracyCircleFill, 100);
             //set location marker visible.
             //load first floor map in package.
-            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
+//            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
 
             if (!mSails.getFloorNameList().isEmpty()) {
                 mSailsMapView.loadFloorMap(mSails.getFloorNameList().get(0));
                 mSailsMapView.getMapViewPosition().setZoomLevel((byte)18);
             }
 
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                boolean first=true;
-                int position=1;
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    mSailsMapView.clear();
-
-                    if(FLOOR_GUIDE&&i==0&&position!=0) {
-                        int p=position;
-                        position=0;
-                        spinner.setSelection(p);
-                        List<LocationRegion> locationRegionList=mSails.findRegionByLabel("floor_guide");
-
-                        if(locationRegionList!=null&&locationRegionList.size()>0&&!first)
-                            showWebView(mSails.findRegionByLabel("floor_guide").get(0).url);
-                        first=false;
-                        return;
-                    }
-                    position=i;
-                    if(FLOOR_GUIDE) {
-                        i--;
-                    }
-//                    i--;
-                    if(i<0)
-                        return;
-                    mSailsMapView.loadFloorMap(mSails.getFloorNameList().get(i));
-                    mSailsMapView.getMapViewPosition().setZoomLevel((byte) 18);
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
+//            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//                boolean first=true;
+//                int position=1;
+//                @Override
+//                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+//                    mSailsMapView.clear();
+//
+//                    if(FLOOR_GUIDE&&i==0&&position!=0) {
+//                        int p=position;
+//                        position=0;
+//                        spinner.setSelection(p);
+//                        List<LocationRegion> locationRegionList=mSails.findRegionByLabel("floor_guide");
+//
+//                        if(locationRegionList!=null&&locationRegionList.size()>0&&!first)
+//                            showWebView(mSails.findRegionByLabel("floor_guide").get(0).url);
+//                        first=false;
+//                        return;
+//                    }
+//                    position=i;
+//                    if(FLOOR_GUIDE) {
+//                        i--;
+//                    }
+////                    i--;
+//                    if(i<0)
+//                        return;
+//                    mSailsMapView.loadFloorMap(mSails.getFloorNameList().get(i));
+//                    mSailsMapView.getMapViewPosition().setZoomLevel((byte) 18);
+//                }
+//
+//                @Override
+//                public void onNothingSelected(AdapterView<?> adapterView) {
+//
+//                }
+//            });
             mSailsMapView.zoomIn();
             mSailsMapView.zoomIn();
             mSailsMapView.setOnRegionClickListener(regionClickListener);
@@ -939,7 +939,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                         @Override
                         public void run() {
                             mapViewInitial();
-                            generateFloorSpinnerProcedure();
+//                            generateFloorSpinnerProcedure();
                             progressdg.dismiss();
                         }
                     });
@@ -1374,11 +1374,12 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
+//                            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
                             if(FLOOR_GUIDE)
-                                spinner.setSelection(mSails.getFloorNameList().indexOf(floorName)+1);
+                            {}
+//                                spinner.setSelection(mSails.getFloorNameList().indexOf(floorName)+1);
                             else
-                                spinner.setSelection(mSails.getFloorNameList().indexOf(floorName));
+//                                spinner.setSelection(mSails.getFloorNameList().indexOf(floorName));
 
                             floorIndicator.setText(mSails.getFloorDescription(floorName));
 
@@ -1397,14 +1398,14 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             });
 
 
-            RelativeLayout floorRelativeLayout = (RelativeLayout) rootView.findViewById(R.id.floorRelativeLayout);
-            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
-            floorRelativeLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    spinner.performClick();
-                }
-            });
+//            RelativeLayout floorRelativeLayout = (RelativeLayout) rootView.findViewById(R.id.floorRelativeLayout);
+////            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
+//            floorRelativeLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    spinner.performClick();
+//                }
+//            });
 
             backNavi.setOnClickListener(new View.OnClickListener() {
                 @Override

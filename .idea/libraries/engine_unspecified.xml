@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="engine-unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hkia/build/intermediates/exploded-aar/NCKU_Hospital_APP-master/engine/unspecified/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/hkia/build/intermediates/exploded-aar/NCKU_Hospital_APP-master/engine/unspecified/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
