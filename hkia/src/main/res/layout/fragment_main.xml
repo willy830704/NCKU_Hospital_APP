@@ -153,7 +153,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="6dp"
         android:layout_marginBottom="86dp"
-        android:layout_below="@+id/floorRelativeLayout"
+        android:layout_below="@+id/searchBarLinearLayout"
         android:layout_marginTop="15dp" />
 
     <ImageView
@@ -384,7 +384,7 @@
         android:id="@+id/frameLayoutFunction"
         android:visibility="invisible"
         android:layout_margin="10dp"
-        android:layout_below="@+id/floorRelativeLayout"
+        android:layout_below="@+id/searchBarLinearLayout"
         android:alpha="0.8" />
 
     <view
@@ -393,7 +393,7 @@
         class="com.sails.hkiademo.StartEndManager"
         android:id="@+id/start_end_frame"
         android:layout_margin="10dp"
-        android:layout_below="@+id/floorRelativeLayout"
+        android:layout_below="@+id/searchBarLinearLayout"
         android:focusable="false"
         android:clickable="true" />
 
@@ -440,24 +440,25 @@
                 android:textStyle="bold"
                 android:textColor="@android:color/white" />
         </RelativeLayout>
-    </FrameLayout>
 
-    <view
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        class="com.sails.hkiademo.AutoResizeTextView"
-        android:id="@+id/floorIndicator"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:background="#ff49b5e7"
-        android:textSize="100sp"
-        android:maxLines="1"
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:visibility="invisible" />
+        <view
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            class="com.sails.hkiademo.AutoResizeTextView"
+            android:id="@+id/floorIndicator"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="#ff49b5e7"
+            android:textSize="100sp"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="invisible"
+            android:layout_gravity="right|top" />
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"

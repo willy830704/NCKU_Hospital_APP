@@ -91,7 +91,7 @@ class PathRoutingManager extends Handler {
                 if (processCount == 1) {
                     if (isSuccess) {
                         ((MainActivity) context).setMode(((MainActivity) context).placeholderFragment.NAVIGATION_MODE);
-                        ((MainActivity) context).placeholderFragment.floorRelativeLayout.setVisibility(View.INVISIBLE);
+                        //((MainActivity) context).placeholderFragment.floorRelativeLayout.setVisibility(View.INVISIBLE);
                         ((MainActivity) context).placeholderFragment.searchBarLinearLayout.setVisibility(View.INVISIBLE);
                         ((MainActivity) context).placeholderFragment.cancelNaviLayout.setVisibility(View.VISIBLE);
                         ((MainActivity) context).placeholderFragment.floorIndicator.setVisibility(View.VISIBLE);

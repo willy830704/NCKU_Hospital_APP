@@ -387,7 +387,6 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             placeholderFragment.cancelNaviLayout.setVisibility(View.INVISIBLE);
             placeholderFragment.floorIndicator.setVisibility(View.INVISIBLE);
             placeholderFragment.searchBarLinearLayout.setVisibility(View.VISIBLE);
-            placeholderFragment.floorRelativeLayout.setVisibility(View.VISIBLE);
             return;
         }
         if (mStartEndManager.getVisibility() == View.VISIBLE) {
@@ -468,7 +467,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         LocationRegion highlightLocationRegion = null;
         List<LocationRegion> highlightLocationRegionList = null;
         LinearLayout searchBarLinearLayout;
-        RelativeLayout floorRelativeLayout;
+        //RelativeLayout floorRelativeLayout;
         RelativeLayout cancelNaviLayout;
         RelativeLayout slidingTransferLayout;
         RelativeLayout routeFailIntoLayout;
@@ -1203,7 +1202,6 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             backNavi.setVisibility(View.INVISIBLE);
 //            arrangePath = (ImageView) rootView.findViewById(R.id.arrangepath);
             searchBarLinearLayout = (LinearLayout) rootView.findViewById(R.id.searchBarLinearLayout);
-            floorRelativeLayout = (RelativeLayout) rootView.findViewById(R.id.floorRelativeLayout);
             cancelNaviLayout = (RelativeLayout) rootView.findViewById(R.id.cancelNaviLayout);
             cancelNaviIcon = (ImageView) rootView.findViewById(R.id.cancelNavi);
             cancelNaviText = (TextView) rootView.findViewById(R.id.cancelNaviText);
@@ -1238,7 +1236,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 public void onClick(View v) {
                     cancelNaviLayout.setVisibility(View.INVISIBLE);
                     searchBarLinearLayout.setVisibility(View.VISIBLE);
-                    floorRelativeLayout.setVisibility(View.VISIBLE);
+                    //floorRelativeLayout.setVisibility(View.VISIBLE);
                     floorIndicator.setVisibility(View.INVISIBLE);
                     mRoutingHandler.disableHandler();
                 }
@@ -1488,29 +1486,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         findViewById(R.id.rlNavigator).setVisibility(View.VISIBLE);
         YoYo.with(Techniques.FadeInUp).playOn(findViewById(R.id.rlNavigator));
         YoYo.with(Techniques.FadeOutUp).playOn(findViewById(R.id.searchBarLinearLayout));
-        YoYo.with(Techniques.FadeOutUp).withListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
 
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                findViewById(R.id.searchBarLinearLayout).setVisibility(View.GONE);
-                findViewById(R.id.floorRelativeLayout).setVisibility(View.GONE);
-
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        }).playOn(findViewById(R.id.floorRelativeLayout));
         YoYo.with(Techniques.FadeOut).playOn(findViewById(R.id.zoomin));
         YoYo.with(Techniques.FadeOut).withListener(new Animator.AnimatorListener() {
             @Override
@@ -1577,9 +1553,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             }
         }).playOn(findViewById(R.id.rlNavigator));
         findViewById(R.id.searchBarLinearLayout).setVisibility(View.VISIBLE);
-        findViewById(R.id.floorRelativeLayout).setVisibility(View.VISIBLE);
         YoYo.with(Techniques.FadeInDown).playOn(findViewById(R.id.searchBarLinearLayout));
-        YoYo.with(Techniques.FadeInDown).playOn(findViewById(R.id.floorRelativeLayout));
         YoYo.with(Techniques.FadeIn).playOn(findViewById(R.id.zoomin));
         YoYo.with(Techniques.FadeIn).playOn(findViewById(R.id.zoomout));
         findViewById(R.id.zoomin).setVisibility(View.VISIBLE);
