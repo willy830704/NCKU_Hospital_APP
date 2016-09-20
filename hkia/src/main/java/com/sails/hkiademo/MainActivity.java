@@ -89,7 +89,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
     boolean trueNaviMode=false;
 
-    static boolean BLE=true;
+    static boolean BLE=false;
     static boolean TEST=false;
     static boolean BLUEDOT=true;
     private static final String TAG = "MainActivity";
@@ -217,7 +217,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         }
         placeholderFragment.progressdg = ProgressDialog.show(this, "", getString(R.string.processing), true, false);
         if(!BLE)
-            BUILDING_ID="57317a41e62e7a7b59000459";
+            BUILDING_ID="5794db0bc7adf4fc4d000194";
         placeholderFragment.openBuilding(TOKEN, BUILDING_ID);
 
     }
