@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">HKIA Demo</string>
+    <string name="app_name">成大醫院導航GO</string>
     <string name="positioning">Positioning…</string>
     <string name="settings">Setting</string>
     <string name="Search">Search</string>
     <string name="exit">Gateway</string>
-    <string name="food">Food</string>
+    <string name="food">Important</string>
     <string name="refreshment">Drink</string>
     <string name="toilet">Toilet</string>
     <string name="shopping">Shopping</string>
@@ -31,6 +31,7 @@
     <string name="set_start_point">Set Start Point</string>
     <string name="set_end_point">Set End Point</string>
     <string name="action_aboutus">About MyMap</string>
+    <string name="action_guideline">Manual</string>
     <string name="action_feedback">Feedback</string>
     <string name="start_info">Please choose one POI as start point</string>
     <string name="end_info">Please choose one POI as end point</string>

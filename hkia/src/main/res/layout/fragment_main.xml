@@ -26,6 +26,7 @@
         android:alpha="0.8">
 
         <LinearLayout
+            android:id="@+id/searchBarLinearLayout2"
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="match_parent">
@@ -64,7 +65,7 @@
                 android:background="#514F51"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="7dp"
-                android:visibility="visible"></LinearLayout>
+                android:visibility="visible" />
 
             <ImageView
                 android:layout_width="wrap_content"

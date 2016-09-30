@@ -2,144 +2,165 @@
 <items version="2" >
 
     <item
-        jar="/Users/Verca/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.5.1/e2a00ad1d7e540ec395e9296a34da484c8888d4d/jackson-core-2.5.1.jar"
-        jumboMode="true"
+        jar="C:\Users\Wayne\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.5.1\e2a00ad1d7e540ec395e9296a34da484c8888d4d\jackson-core-2.5.1.jar"
+        jumboMode="false"
         revision="24.0.0"
         sha1="e2a00ad1d7e540ec395e9296a34da484c8888d4d">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.5.1_df4e0cf5fc7262331f46030db4276551d3243818/classes.dex" />
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\jackson-core-2.5.1_7adf82b8725d4d5440b6db26d3ec7883b29500c8.jar" />
     </item>
     <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.daimajia.androidanimations/library/1.1.3/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="8cec50fc9cc847bad0d6ed7d93814f4b34744521">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.daimajia.androidanimations-library-1.1.3_4b11177935ca3e1b13dbaec06e012f2e20b51369/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_9399c94b74a0477f7cfb87430cdff65b6faaaac6/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_05fa92d14410fbb3f59663c6ce2a4ea27f5de530/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/.gradle/caches/modules-2/files-2.1/com.bluelinelabs/logansquare/1.3.6/2e059622d3d37758b0f8022fd678de02b025cbe8/logansquare-1.3.6.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="2e059622d3d37758b0f8022fd678de02b025cbe8">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/logansquare-1.3.6_e8dc061858eb9444ae3daa14f2032032d6f6ad78/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/0.10.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="5e88a2a26ac71cd7f8fd8bd9f9381fa06d1a47a3">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.fresco-imagepipeline-base-0.10.0_e5f065139c13d273e8101702ce818993a09ebc83/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/24.0.0/2943c74db6d4346ab8c6531adac91fa05c137c40/support-annotations-24.0.0.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_db8456d18dbfd88799e51463d203c6940e15432b/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.daimajia.easing/library/1.0.1/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.daimajia.easing-library-1.0.1_6448b746e47d03c04bb7090e28c43cf8c1c56a59/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="8b60a5d1f73010c0a694f1ed3178135ffcccdbbc">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2951e42c46121c31fcb5e0ef942c389f8ecaf3cd/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_958da60ac6db701c0527acc8e5c9433554f5c675/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/libs/ksoap2-android-assembly-2.4-jar-with-dependencies.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="e8796346a9191a019e936210a2dc50662c57594b">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/2/ksoap2-android-assembly-2.4-jar-with-dependencies_29e5c1d28153b5fb866012a0aa7e4da7b3ce61bf/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.1.4/129874135e6081269ace2312092031558865de12/bolts-android-1.1.4.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="129874135e6081269ace2312092031558865de12">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/bolts-android-1.1.4_c258e43be1c9b927fd626ec0f404ba4ab9383ddd/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.facebook.fresco/drawee/0.10.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="65f0c887ee1f57cd0ea65b228e39b7f35372b798">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.fresco-drawee-0.10.0_36cefa34926b9e3bf0e874ff9090061a1d6406f5/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.facebook.fresco/fresco/0.10.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="857099e23430445aeb65cf703d5adf646ff280f1">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.fresco-fresco-0.10.0_cdccde333c198310e6a98368d3f5330f9c6fab5b/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/0.10.0/jars/classes.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="d323cf4983bdfce7136a1ce5e32710e1b36b20fe">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.fresco-fbcore-0.10.0_302dbf0f302d633f4e57a417eb409134e7d7ceda/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
-        jumboMode="true"
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
+        jumboMode="false"
         revision="24.0.0"
         sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_ce5b63af637a5e9a920ccd66e031482e8291de35/classes.dex" />
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\internal_impl-24.0.0_9749b17f855340a3bce0370aa3db0fed9c405c4b.jar" />
     </item>
     <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
-        jumboMode="true"
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.facebook.fresco\drawee\0.10.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="65f0c887ee1f57cd0ea65b228e39b7f35372b798">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.facebook.fresco-drawee-0.10.0_2b5ef888410a7678d9b626e309668c657a89e6a0.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\library-2.4.0_65d7aec5734d897a01d374a4238af859ac17ac9a.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-appindexing-8.1.0_06ec9df2fc3b92da65e55413539f7144c3bb9522.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\libs\ksoap2-android-assembly-2.4-jar-with-dependencies.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="e8796346a9191a019e936210a2dc50662c57594b">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\ksoap2-android-assembly-2.4-jar-with-dependencies_0fc3b8e6b56994b93d639e71bd45c73cfdd0ea01.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.1.4\129874135e6081269ace2312092031558865de12\bolts-android-1.1.4.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="129874135e6081269ace2312092031558865de12">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\bolts-android-1.1.4_269cbad5d020924f3958c92b4f10e14bcf6659e5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\0.10.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="d323cf4983bdfce7136a1ce5e32710e1b36b20fe">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.facebook.fresco-fbcore-0.10.0_e1fe12d580a0921fe9b2a8ead51be9b3a23707c0.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\NCKU_Hospital_APP-master\ui\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="cf6f7287f8968d4f86688f28b154074a8f42afe8">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\NCKU_Hospital_APP-master-ui-unspecified_18e20c581a8b5039d4eff448250568c8ae4aafb3.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.0.0_325f5da9dce7fccd4d5a1240ec73f384e77fc49c.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\net.fredericosilva\showTipsView\1.0.4\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="505119f7d6666240ea663bf89db7ab7fd3b62742">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\net.fredericosilva-showTipsView-1.0.4_7ab5e5d8f25e23957dd32886be9ec2e474bd10ee.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="false"
         revision="24.0.0"
         sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_f1f3ae0747701b5fcfd72c3919dd660c05364732/classes.dex" />
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.3.0_cb1accdd9346e52012e5fd4eff84737c26d8e491.jar" />
     </item>
     <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
-        jumboMode="true"
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.facebook.fresco\fresco\0.10.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="857099e23430445aeb65cf703d5adf646ff280f1">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.facebook.fresco-fresco-0.10.0_6218a22b195575203f5495bb996a6c98e6176cd9.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\NCKU_Hospital_APP-master\engine\unspecified\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="332f6af0fd74a446d9d6836baf94c8252dca101b">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\NCKU_Hospital_APP-master-engine-unspecified_40b223154123cf296ba716b1835ffd5af4f6dbcb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.3.0\jars\classes.jar"
+        jumboMode="false"
         revision="24.0.0"
         sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_363c981f902716059b8d63d26177ba9ed13c67cf/classes.dex" />
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.3.0_feb04a5fcbb9e132a6ffd14d335cf1271cabbe0e.jar" />
     </item>
     <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/0.10.0/jars/classes.jar"
-        jumboMode="true"
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.daimajia.easing\library\1.0.1\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="d7e947f993bf32a00fcb3078cdda8bb11c930afb">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.daimajia.easing-library-1.0.1_541440f001919d09a5cd2b3a92a03d1240bd8a95.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-8.1.0_89eaaa37c924a870a033e0769a1edc208b55f2e6.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\24.0.0\2943c74db6d4346ab8c6531adac91fa05c137c40\support-annotations-24.0.0.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\support-annotations-24.0.0_a96cf148d700c90bd63c7d2f1a2647263ad488d5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\.gradle\caches\modules-2\files-2.1\com.bluelinelabs\logansquare\1.3.6\2e059622d3d37758b0f8022fd678de02b025cbe8\logansquare-1.3.6.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="2e059622d3d37758b0f8022fd678de02b025cbe8">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\logansquare-1.3.6_68689663364fcc30445b9996945566a0727a1463.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.3.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.3.0_627fa3e7bba7bf2bf6f0118132c81c113603f0a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\0.10.0\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="5e88a2a26ac71cd7f8fd8bd9f9381fa06d1a47a3">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-base-0.10.0_ffea5e5f7ded81de2b06a366857280e0fcd16447.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.daimajia.androidanimations\library\1.1.3\jars\classes.jar"
+        jumboMode="false"
+        revision="24.0.0"
+        sha1="8cec50fc9cc847bad0d6ed7d93814f4b34744521">
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.daimajia.androidanimations-library-1.1.3_c3d31a510e37374856c7ea8a8b066da5f6cd56fb.jar" />
+    </item>
+    <item
+        jar="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\0.10.0\jars\classes.jar"
+        jumboMode="false"
         revision="24.0.0"
         sha1="6e1ed00013584399dbe27d45ac1fd6a9828c9fca">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/com.facebook.fresco-imagepipeline-0.10.0_8da8e795fbdc5e14b0596c7e8b8ce0ef7c9c24a0/classes.dex" />
-    </item>
-    <item
-        jar="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="24.0.0"
-        sha1="289c5cf5669c967076c92bfbdc9198e04a01230f">
-        <dex dex="/Users/Verca/Desktop/app_nckm/NCKU_Hospital_APP-master/hkia/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_ae558474ecde1ec564a339dc44af02aef31b6f1e/classes.dex" />
+        <dex dex="C:\Users\Wayne\Desktop\NCKU_Hospital_APP-master\hkia\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-0.10.0_51a754f0bab8c88f28a95b08a042ef589652248d.jar" />
     </item>
 
 </items>

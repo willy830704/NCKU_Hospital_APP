@@ -37,13 +37,13 @@ public class LocationRegionListAdapter extends ArrayAdapter<LocationRegion> {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.child_iv);
         if(lr.type!=null&&lr.subtype!=null&&lr.type.equals("store")&&lr.subtype.equals("food"))
             imageView.setImageResource(R.drawable.food_small_dark);
-        if(lr.type!=null&&lr.subtype!=null&&lr.type.equals("store")&&lr.subtype.equals("drink"))
+        if(lr.type!=null&&lr.subtype!=null&&lr.type.equals("store")&&lr.subtype.equals("Drink"))
             imageView.setImageResource(R.drawable.refreshment_small_dark);
         if(lr.type!=null&&lr.subtype!=null&&lr.type.equals("store")&&lr.subtype.equals("shopping"))
             imageView.setImageResource(R.drawable.shopping_small_dark);
         if(lr.type!=null&&lr.subtype!=null&&lr.type.equals("facility")&&lr.subtype.equals("toilet"))
             imageView.setImageResource(R.drawable.toilet_small_dark);
-        if(lr.type!=null&&lr.type.equals("gateway"))
+        if(lr.type!=null&&lr.type.equals("exit"))
             imageView.setImageResource(R.drawable.exit_small_dark);
         if(lr.type!=null&&lr.subtype!=null&&lr.type.equals("facility")&&lr.subtype.equals("atm"))
             imageView.setImageResource(R.drawable.atm_small_dark);

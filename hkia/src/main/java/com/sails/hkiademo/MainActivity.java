@@ -14,12 +14,12 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.location.Location;
 import android.location.LocationListener;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
-//import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -35,8 +35,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.FrameLayout;
@@ -44,16 +42,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import com.sails.sailscloud.BuildingSelectDialog;
-//import com.sails.sailscloud.SignInActivity;
-//import com.sails.cloud.SAILSBuilding;
-//import com.sails.cloud.SAILSCloud;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.nineoldandroids.animation.Animator;
 import com.sails.engine.Beacon;
 import com.sails.engine.LocationRegion;
@@ -62,10 +58,14 @@ import com.sails.engine.SAILSMapView;
 import com.sails.engine.core.model.GeoPoint;
 import com.sails.engine.overlay.Marker;
 import com.sails.engine.overlay.ScreenDensity;
+import com.sails.poi.POIActivity;
 import com.sails.poi.POIAssetsAdapter;
 import com.sails.service.Version;
-import com.sails.poi.POIActivity;
 import com.sails.ui.DirectionIndicator;
+
+import net.frederico.showtipsview.ShowTipsBuilder;
+import net.frederico.showtipsview.ShowTipsView;
+import net.frederico.showtipsview.ShowTipsViewInterface;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -75,23 +75,28 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+//import android.support.v4.widget.SwipeRefreshLayout;
+//import com.sails.sailscloud.BuildingSelectDialog;
+//import com.sails.sailscloud.SignInActivity;
+//import com.sails.cloud.SAILSBuilding;
+//import com.sails.cloud.SAILSCloud;
 
 
 public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickListener, LocationListener {
 
 
-    static String TOKEN="017b2da324ca47d1857be6ff2b2cdeb6";
-    static String BUILDING_ID="5794db0bc7adf4fc4d000194";
+    static String TOKEN = "017b2da324ca47d1857be6ff2b2cdeb6";
+    static String BUILDING_ID = "5794db0bc7adf4fc4d000194";
 
 //
 //    static String TOKEN="831794496a0f4de9aa0651d97610733f";
 //    static String BUILDING_ID="57317a41e62e7a7b59000459";
 
-    boolean trueNaviMode=false;
+    boolean trueNaviMode = false;
 
-    static boolean BLE=false;
-    static boolean TEST=false;
-    static boolean BLUEDOT=true;
+    static boolean BLE = false;
+    static boolean TEST = false;
+    static boolean BLUEDOT = true;
     private static final String TAG = "MainActivity";
     public static boolean isForeground = false;     // Eddie Hua
     PlaceholderFragment placeholderFragment = new PlaceholderFragment();
@@ -101,11 +106,16 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
     static AnimationController amc;
     static StartEndManager mStartEndManager;
     static SearchManager mSearchManager;
-    static String LANGUAGE="en";
-//    static String LANGUAGE="zh_TW";
-    static boolean FLOOR_GUIDE=false;
+    static String LANGUAGE = "en";
+    //    static String LANGUAGE="zh_TW";
+    static boolean FLOOR_GUIDE = false;
     private static String sel_type, sel_subtype;
-    private String POI_Id="0205001";
+    private String POI_Id = "0205001";
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
     public void setMode(int mode) {
         placeholderFragment.mode = mode;
@@ -114,8 +124,8 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Locale locale= new Locale("en");
-        LocationRegion.FONT_LANGUAGE=LocationRegion.NORMAL;
+        Locale locale = new Locale("en");
+        LocationRegion.FONT_LANGUAGE = LocationRegion.NORMAL;
 //        if(LANGUAGE.equals("en")) {
 //            LocationRegion.FONT_LANGUAGE=LocationRegion.ENGLISH;
 //            locale = new Locale("en");
@@ -171,10 +181,13 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         }
         ScreenDensity.density = getResources().getDisplayMetrics().density;
         amc = new AnimationController();
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     private void loadPOIListProcedure() {
-        POIAssetsAdapter.Import(this,"poi.json");
+        POIAssetsAdapter.Import(this, "poi.json");
     }
 
 
@@ -205,8 +218,8 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 //            placeholderFragment.openBuilding(TOKEN, BUILDING_ID);
 //        }
         try {
-            ((TextView)findViewById(R.id.tvVersion)).setText("V"+getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
-            if(TEST)
+            ((TextView) findViewById(R.id.tvVersion)).setText("V" + getPackageManager().getPackageInfo(getPackageName(), 0).versionName);
+            if (TEST)
                 findViewById(R.id.tvVersion).setVisibility(View.VISIBLE);
             else
                 findViewById(R.id.tvVersion).setVisibility(View.INVISIBLE);
@@ -216,12 +229,11 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             e.printStackTrace();
         }
         placeholderFragment.progressdg = ProgressDialog.show(this, "", getString(R.string.processing), true, false);
-        if(!BLE)
-            BUILDING_ID="5794db0bc7adf4fc4d000194";
+        if (!BLE)
+            BUILDING_ID = "5794db0bc7adf4fc4d000194";
         placeholderFragment.openBuilding(TOKEN, BUILDING_ID);
 
     }
-
 
 
     boolean locationStart = false;
@@ -281,6 +293,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         }
         placeholderFragment.functionClickProcedure();
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -313,13 +326,15 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 //                popup.getMenu().findItem(R.id.action_promote).setVisible(false);
         popup.show();
     }
+
     private void setupMenuItemTitle(Menu menu) {
-        if(mSails.isLocationEngineStarted()) {
+        if (mSails.isLocationEngineStarted()) {
             menu.findItem(R.id.action_enable_location).setTitle(R.string.action_disable_location);
         } else {
             menu.findItem(R.id.action_enable_location).setTitle(R.string.action_enable_location);
         }
     }
+
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
@@ -330,6 +345,9 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 Intent aboutus = new Intent(this, AboutUsActivity.class);
                 startActivity(aboutus);
                 return true;
+//            case R.id.action_guideline:
+//                showManual();
+//                return true;
             default:
                 return false;
         }
@@ -337,7 +355,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
     private void engineStartStopProcedure() {
         if (mSails != null) {
-            if(mSails.isLocationEngineStarted()) {
+            if (mSails.isLocationEngineStarted()) {
                 mSailsMapView.setLocatorMarkerVisible(false);
                 mSailsMapView.invalidate();
                 isPathHandlerEnabled = false;
@@ -350,7 +368,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             } else {
                 mSailsMapView.setLocatorMarkerVisible(true);
                 mSails.startLocatingEngine();
-                mSailsMapView.setMode(SAILSMapView.LOCATION_CENTER_LOCK|SAILSMapView.FOLLOW_PHONE_HEADING);
+                mSailsMapView.setMode(SAILSMapView.LOCATION_CENTER_LOCK | SAILSMapView.FOLLOW_PHONE_HEADING);
             }
         }
     }
@@ -443,6 +461,46 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         }
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.sails.hkiademo/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "Main Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app URL is correct.
+                Uri.parse("android-app://com.sails.hkiademo/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -466,12 +524,12 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         LocationRegion endLocationRegion = null;
         LocationRegion highlightLocationRegion = null;
         List<LocationRegion> highlightLocationRegionList = null;
-        LinearLayout searchBarLinearLayout;
+        LinearLayout searchBarLinearLayout, searchBarLinearLayout2;
         //RelativeLayout floorRelativeLayout;
         RelativeLayout cancelNaviLayout;
         RelativeLayout slidingTransferLayout;
         RelativeLayout routeFailIntoLayout;
-        ImageView cancelNaviIcon;
+        ImageView cancelNaviIcon, imageView, imageView2;
         TextView cancelNaviText;
         int mode = NORMAL_MODE;
         public static final int NORMAL_MODE = 0;
@@ -487,8 +545,6 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
         public PlaceholderFragment() {
         }
-
-
 
 
 //        void generateFloorSpinnerProcedure() {
@@ -520,7 +576,8 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             }
 
         }
-        SAILSMapView.OnRegionClickListener regionClickListener=new SAILSMapView.OnRegionClickListener() {
+
+        SAILSMapView.OnRegionClickListener regionClickListener = new SAILSMapView.OnRegionClickListener() {
             @Override
             public void onClick(List<LocationRegion> locationRegions) {
                 if (mode == MULTIPLE_MARKER_MODE || mode == MULTIPLE_MARKER_WITH_SINGLE_MODE || mode == NAVIGATION_MODE)
@@ -553,6 +610,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
             }
         };
+
         void mapViewInitial() {
             //establish a connection of SAILS engine into SAILS MapView.
 //            mSailsMapView.setSAILSEngine(mSails);
@@ -572,7 +630,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
             if (!mSails.getFloorNameList().isEmpty()) {
                 mSailsMapView.loadFloorMap(mSails.getFloorNameList().get(0));
-                mSailsMapView.getMapViewPosition().setZoomLevel((byte)18);
+                mSailsMapView.getMapViewPosition().setZoomLevel((byte) 18);
             }
 
 //            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -793,7 +851,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         @Override
         public void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
-            if(requestCode==MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
+            if (requestCode == MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {
                 afterPermissionRoutine();
             }
         }
@@ -951,7 +1009,8 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 }
             });
             mSails.setOnLocationChangeEventListener(new SAILS.OnLocationChangeEventListener() {
-                boolean first=false;
+                boolean first = false;
+
                 @Override
                 public void OnLocationChange() {
                     if (mSailsMapView.isCenterLock() && !mSailsMapView.isInLocationFloor() && mSails.isLocationFix()) {
@@ -974,9 +1033,9 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
                     if (mSails.isLocationFix()) {
 
-                        if(!first) {
+                        if (!first) {
                             mSailsMapView.setMode(mSailsMapView.getMode() | SAILSMapView.LOCATION_CENTER_LOCK);
-                            first=true;
+                            first = true;
                         }
 
                         identifyIndoor.dismiss();
@@ -986,16 +1045,16 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 }
             });
             mSails.setOnBTLEPushEventListener(new SAILS.OnBTLEPushEventListener() {
-//                LocationRegion saveLR=null;
+                //                LocationRegion saveLR=null;
                 @Override
                 public void OnPush(Beacon mB) {
-                    if(mB.locationRegions==null||mB.locationRegions.size()==0)
+                    if (mB.locationRegions == null || mB.locationRegions.size() == 0)
                         return;
-                    final List<LocationRegion> lr=mB.locationRegions;
+                    final List<LocationRegion> lr = mB.locationRegions;
 //                    if(saveLR==lr.get(0))
 //                        return;
 //                    saveLR=lr.get(0);
-                    if(lr!=null&&lr.size()>0){//&&lr.get(0).url!=null) {
+                    if (lr != null && lr.size() > 0) {//&&lr.get(0).url!=null) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -1080,6 +1139,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 }
             });*/
         }
+
         public void showWebView(String url) {
             AlertDialog alert = new AlertDialog.Builder(getActivity()).create();
 //                    alert.setTitle(R.string.mail_verify_title);
@@ -1091,20 +1151,20 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 //                        }
 //                    });
             final WebView wv = new WebView(getActivity());
-            if(!BLE) {
+            if (!BLE) {
                 wv.setWebChromeClient(new WebChromeClient());
                 wv.clearCache(true);
 
             }
-            File lFile=new File(Environment.getExternalStorageDirectory() + url+".html");
-            if(LANGUAGE.equals("en"))
-                lFile = new File(Environment.getExternalStorageDirectory() + url+"_en.html");
-            wv. getSettings().setJavaScriptEnabled (true);
-            wv. getSettings().setJavaScriptCanOpenWindowsAutomatically (false);
+            File lFile = new File(Environment.getExternalStorageDirectory() + url + ".html");
+            if (LANGUAGE.equals("en"))
+                lFile = new File(Environment.getExternalStorageDirectory() + url + "_en.html");
+            wv.getSettings().setJavaScriptEnabled(true);
+            wv.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
 //                    wv. getSettings().setPl (true);
-            wv. getSettings().setSupportMultipleWindows (false);
-            wv. getSettings().setSupportZoom(false);
-            wv. setVerticalScrollBarEnabled (false);
+            wv.getSettings().setSupportMultipleWindows(false);
+            wv.getSettings().setSupportZoom(false);
+            wv.setVerticalScrollBarEnabled(false);
 //                    wv. setHorizontalScrollBarEnabled (false);
             wv.loadUrl("file:///" + lFile.getAbsolutePath());
             alert.setView(wv);
@@ -1129,9 +1189,61 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             alert.show();
 
 
-
-
         }
+
+
+        public void showManual() {
+            final MainActivity activity = (MainActivity) getActivity();
+
+            ShowTipsView showtips1 = new ShowTipsBuilder(activity)
+                    .setTarget(imageView, imageView.getWidth() / 2, imageView.getHeight() / 2, 90)//使用这个方法的时候，默认是以元素的左上角为圆心的
+//                    .setTarget(imageView)//设置需要提示的控件
+                    .setTitle("搜尋")//设置显示的提示标题
+                    .setDescription("可直接點選選單或選擇列表內容，顯示地點或導航路徑")//设置显示的具体提示信息
+                    .setDelay(500)//设置进入界面后延迟时间显示提示
+                    .setBackgroundColor(0x6989BC)//设置提示背景颜色
+                    .setBackgroundAlpha(0X50)//设置背景透明度
+                    .setButtonText("下一步")//设置GOIT即按钮的显示文本
+                    .displayOneTime(8)//设置当前控件的shopTipsId，此id唯一不能重复，重复的话值显示第一次
+                    .build();
+            showtips1.show(activity);//设置显示的界面
+            showtips1.setCallback(new ShowTipsViewInterface() {//回调事件用于在一个页面顺序提示
+                @Override
+                public void gotItClicked() {
+                    final ShowTipsView showtips2 = new ShowTipsBuilder(activity)
+                            .setTarget(imageView2, imageView2.getWidth() / 2, imageView2.getHeight() / 2, 90)//使用这个方法的时候，默认是以元素的左上角为圆心的
+//                            .setTarget(imageView2)//设置需要提示的控件，默认以控件的中心为圆心，半径为view.getHeight()/2
+                            .setTitle("主選單")//设置显示的提示标题
+                            .setDescription("可查詢成大醫院內各項設施，如重要地點、購物、提款機等")//设置显示的具体提示信息
+                            .setDelay(500)//设置进入界面后延迟时间显示提示
+                            .setBackgroundColor(0x6989BC)//设置提示背景颜色
+                            .setBackgroundAlpha(0X50)//设置背景透明度
+                            .setButtonText("下一步")//设置GOIT即按钮的显示文本
+                            .displayOneTime(9)//设置当前控件的shopTipsId，此id唯一不能重复，重复的话值显示第一次,,,如果不设置这个属性每次启动都会有提示
+                            .build();
+                    showtips2.show(activity);//设置显示的界面
+                    showtips2.setCallback(new ShowTipsViewInterface() {
+                        @Override
+                        public void gotItClicked() {
+                            final ShowTipsView showtips3 = new ShowTipsBuilder(activity)
+                                    .setTarget(lockcenter, lockcenter.getWidth() / 2, lockcenter.getHeight() / 2, 90)//使用这个方法的时候，默认是以元素的左上角为圆心的
+//                                    .setTarget(btn2)//设置需要提示的控件，默认以控件的中心为圆心，半径为view.getHeight()/2
+                                    .setTitle("定位")//设置显示的提示标题
+                                    .setDescription("點擊按鈕顯示目前所在位置")//设置显示的具体提示信息
+                                    .setDelay(500)//设置进入界面后延迟时间显示提示
+                                    .setBackgroundColor(0x6989BC)//设置提示背景颜色
+                                    .setBackgroundAlpha(0X50)//设置背景透明度
+                                    .setButtonText("開始使用")//设置GOIT即按钮的显示文本
+                                    .displayOneTime(10)//设置当前控件的shopTipsId，此id唯一不能重复，重复的话值显示第一次,,,如果不设置这个属性每次启动都会有提示
+                                    .build();
+                            showtips3.show(activity);//设置显示的界面
+                        }
+                    });
+                }
+            });
+        }
+
+
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             final MainActivity activity = (MainActivity) getActivity();
@@ -1146,10 +1258,10 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             mSails.setEnvironmentIsHighBeaconDensity(true);//v1.51
 
             // EddieHua : create location change call back.
-            SharedPreferences sp=getActivity().getSharedPreferences("ecs",MODE_PRIVATE);
+            SharedPreferences sp = getActivity().getSharedPreferences("ecs", MODE_PRIVATE);
 //            ((TextView)getActivity().findViewById(R.id.tvWelcome)).setText(sp.getString("welcome_msg","Welcome Dear Guest"));
-            if(BLE)
-                mSails.setMode(SAILS.BLE_GFP_IMU|SAILS.BLE_ADVERTISING);
+            if (BLE)
+                mSails.setMode(SAILS.BLE_GFP_IMU | SAILS.BLE_ADVERTISING);
 //                mSails.setMode(SAILS.BLE_GFP_ONLY|SAILS.BLE_ADVERTISING);
             else
                 mSails.setMode(SAILS.WIFI_GFP_IMU);
@@ -1202,6 +1314,9 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
             backNavi.setVisibility(View.INVISIBLE);
 //            arrangePath = (ImageView) rootView.findViewById(R.id.arrangepath);
             searchBarLinearLayout = (LinearLayout) rootView.findViewById(R.id.searchBarLinearLayout);
+            searchBarLinearLayout2 = (LinearLayout) searchBarLinearLayout.findViewById(R.id.searchBarLinearLayout2);
+            imageView = (ImageView) searchBarLinearLayout2.findViewById(R.id.imageView);
+            imageView2 = (ImageView) searchBarLinearLayout2.findViewById(R.id.imageView2);
             cancelNaviLayout = (RelativeLayout) rootView.findViewById(R.id.cancelNaviLayout);
             cancelNaviIcon = (ImageView) rootView.findViewById(R.id.cancelNavi);
             cancelNaviText = (TextView) rootView.findViewById(R.id.cancelNaviText);
@@ -1242,6 +1357,59 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 }
             });
 
+//            ShowTipsView showtips1 = ShowTipUtil.shows(activity, imageView, "搜尋", "可直接點選選單或選擇列表內容，顯示地點或導航路徑", 1);
+//            final ShowTipsView showtips2 = ShowTipUtil.shows(activity, imageView2, "主選單", "顯示出成大醫院內各項設施，如重要地點、餐點、廁所等", 1);
+//            final ShowTipsView showtips3 = ShowTipUtil.shows(activity, lockcenter, "定位", "可在畫面上顯示出使用者目前所在位置", 1);
+
+//            ShowTipsView showtips1 = ShowTipUtil.shows(activity, imageView, "搜尋", "可直接點選選單或選擇列表內容，顯示地點或導航路徑", 1);
+//            ShowTipsView showtips1 = new ShowTipsBuilder(activity)
+//                    .setTarget(imageView, imageView.getWidth() / 2, imageView.getHeight() / 2, 90)//使用这个方法的时候，默认是以元素的左上角为圆心的
+////                    .setTarget(imageView)//设置需要提示的控件
+//                    .setTitle("搜尋")//设置显示的提示标题
+//                    .setDescription("可直接點選選單或選擇列表內容，顯示地點或導航路徑")//设置显示的具体提示信息
+//                    .setDelay(500)//设置进入界面后延迟时间显示提示
+//                    .setBackgroundColor(0x6989BC)//设置提示背景颜色
+//                    .setBackgroundAlpha(0X50)//设置背景透明度
+//                    .setButtonText("下一步")//设置GOIT即按钮的显示文本
+//                    .displayOneTime(8)//设置当前控件的shopTipsId，此id唯一不能重复，重复的话值显示第一次
+//                    .build();
+//            showtips1.show(activity);//设置显示的界面
+//            showtips1.setCallback(new ShowTipsViewInterface() {//回调事件用于在一个页面顺序提示
+//                @Override
+//                public void gotItClicked() {
+//                    final ShowTipsView showtips2 = new ShowTipsBuilder(activity)
+//                            .setTarget(imageView2, imageView2.getWidth() / 2, imageView2.getHeight() / 2, 90)//使用这个方法的时候，默认是以元素的左上角为圆心的
+////                            .setTarget(imageView2)//设置需要提示的控件，默认以控件的中心为圆心，半径为view.getHeight()/2
+//                            .setTitle("主選單")//设置显示的提示标题
+//                            .setDescription("可查詢成大醫院內各項設施，如重要地點、購物、提款機等")//设置显示的具体提示信息
+//                            .setDelay(500)//设置进入界面后延迟时间显示提示
+//                            .setBackgroundColor(0x6989BC)//设置提示背景颜色
+//                            .setBackgroundAlpha(0X50)//设置背景透明度
+//                            .setButtonText("下一步")//设置GOIT即按钮的显示文本
+//                            .displayOneTime(9)//设置当前控件的shopTipsId，此id唯一不能重复，重复的话值显示第一次,,,如果不设置这个属性每次启动都会有提示
+//                            .build();
+//                    showtips2.show(activity);//设置显示的界面
+//                    showtips2.setCallback(new ShowTipsViewInterface() {
+//                        @Override
+//                        public void gotItClicked() {
+//                            final ShowTipsView showtips3 = new ShowTipsBuilder(activity)
+//                                    .setTarget(lockcenter, lockcenter.getWidth() / 2, lockcenter.getHeight() / 2, 90)//使用这个方法的时候，默认是以元素的左上角为圆心的
+////                                    .setTarget(btn2)//设置需要提示的控件，默认以控件的中心为圆心，半径为view.getHeight()/2
+//                                    .setTitle("定位")//设置显示的提示标题
+//                                    .setDescription("點擊按鈕顯示目前所在位置")//设置显示的具体提示信息
+//                                    .setDelay(500)//设置进入界面后延迟时间显示提示
+//                                    .setBackgroundColor(0x6989BC)//设置提示背景颜色
+//                                    .setBackgroundAlpha(0X50)//设置背景透明度
+//                                    .setButtonText("開始使用!")//设置GOIT即按钮的显示文本
+//                                    .displayOneTime(10)//设置当前控件的shopTipsId，此id唯一不能重复，重复的话值显示第一次,,,如果不设置这个属性每次启动都会有提示
+//                                    .build();
+//                            showtips3.show(activity);//设置显示的界面
+//                        }
+//                    });
+//                }
+//            });
+
+            showManual();
 
 //            frameLayoutFunction.addView(functionView);
             RelativeLayout frameLayoutNotification = (RelativeLayout) rootView.findViewById(R.id.frameLayoutNotification);
@@ -1255,7 +1423,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                 @Override
                 public void onClick(LocationRegion lr) {
 
-                    ((MainActivity)getActivity()).showPOIView(lr.url);
+                    ((MainActivity) getActivity()).showPOIView(lr.url);
                 }
             });
             //notificationManager.enableRouteButton(false);
@@ -1373,13 +1541,13 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
                         @Override
                         public void run() {
 //                            final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
-                            if(FLOOR_GUIDE)
-                            {}
+                            if (FLOOR_GUIDE) {
+                            }
 //                                spinner.setSelection(mSails.getFloorNameList().indexOf(floorName)+1);
                             else
 //                                spinner.setSelection(mSails.getFloorNameList().indexOf(floorName));
 
-                            floorIndicator.setText(mSails.getFloorDescription(floorName));
+                                floorIndicator.setText(mSails.getFloorDescription(floorName));
 
                             if (mode == MULTIPLE_MARKER_WITH_SINGLE_MODE) {
                                 if (highlightLocationRegion != null) {
@@ -1456,7 +1624,7 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
     // ------------------- Gps Location Manager
     @Override
-    public void onLocationChanged(android.location.Location location) {
+    public void onLocationChanged(Location location) {
         // 緯度 Latitude,  經度 Longitude
         Log.i(TAG, location.getProvider() + " > 緯度 lat:" + location.getLatitude() + ", 經度 long:" + location.getLongitude());
         /*if (mSailsMapView != null) {
@@ -1478,10 +1646,10 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
     }
 
     void runNaviModeProcedure() {
-        trueNaviMode=true;
-        int height=findViewById(R.id.frameLayout).getHeight()/2;
-        ViewGroup.LayoutParams params=findViewById(R.id.di).getLayoutParams();
-        params.height=height;
+        trueNaviMode = true;
+        int height = findViewById(R.id.frameLayout).getHeight() / 2;
+        ViewGroup.LayoutParams params = findViewById(R.id.di).getLayoutParams();
+        params.height = height;
         findViewById(R.id.di).setLayoutParams(params);
         findViewById(R.id.rlNavigator).setVisibility(View.VISIBLE);
         YoYo.with(Techniques.FadeInUp).playOn(findViewById(R.id.rlNavigator));
@@ -1512,24 +1680,25 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         }).playOn(findViewById(R.id.zoomout));
 //        ((DirectionIndicator)findViewById(R.id.di)).setPhase(DirectionIndicator.PHASE1);
 //        ((DirectionIndicator)findViewById(R.id.di)).startAnimate();
-        ((DirectionIndicator)findViewById(R.id.di)).startDemoAnimate();//.startAnimate();
+        ((DirectionIndicator) findViewById(R.id.di)).startDemoAnimate();//.startAnimate();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                ((DirectionIndicator)findViewById(R.id.di)).setDirection(0);
+                ((DirectionIndicator) findViewById(R.id.di)).setDirection(0);
 
             }
-        },2000);
-        ((DirectionIndicator)findViewById(R.id.di)).setOnCloseEventListener(new DirectionIndicator.OnCloseEventListener() {
+        }, 2000);
+        ((DirectionIndicator) findViewById(R.id.di)).setOnCloseEventListener(new DirectionIndicator.OnCloseEventListener() {
             @Override
             public void OnClose() {
                 closeNaviModeProcedure();
             }
         });
     }
+
     void closeNaviModeProcedure() {
-        trueNaviMode=false;
-        ((DirectionIndicator)findViewById(R.id.di)).setArrowVisible(false);
+        trueNaviMode = false;
+        ((DirectionIndicator) findViewById(R.id.di)).setArrowVisible(false);
         YoYo.with(Techniques.FadeOutDown).withListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
@@ -1558,17 +1727,18 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
         YoYo.with(Techniques.FadeIn).playOn(findViewById(R.id.zoomout));
         findViewById(R.id.zoomin).setVisibility(View.VISIBLE);
         findViewById(R.id.zoomout).setVisibility(View.VISIBLE);
-        ((DirectionIndicator)findViewById(R.id.di)).stopAnimate();
+        ((DirectionIndicator) findViewById(R.id.di)).stopAnimate();
 
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
             }
-        },2000);
+        }, 2000);
     }
+
     void onTestButtonClick(View v) {
-        if(trueNaviMode) {
+        if (trueNaviMode) {
             closeNaviModeProcedure();
         } else {
             runNaviModeProcedure();
@@ -1576,10 +1746,11 @@ public class MainActivity extends Activity implements PopupMenu.OnMenuItemClickL
 
 
     }
+
     void showPOIView(String id) {
 
-        Intent i=new Intent(this, POIActivity.class);
-        i.putExtra("POI_Id",id);
+        Intent i = new Intent(this, POIActivity.class);
+        i.putExtra("POI_Id", id);
         startActivity(i);
 
     }
